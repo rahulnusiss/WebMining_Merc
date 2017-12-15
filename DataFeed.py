@@ -19,12 +19,16 @@ class Injection:
         # init dynamo
         self.dynamodb_resource = resource('dynamodb', region_name=self.REGION)
         self.table = self.dynamodb_resource.Table(self.TABLE_NAME)
+        # Remove space from id
+        self.nameID = self.data[0].replace(' ', '_')
 
     def __init__(self, name, details, price):
         self.data = [name, details, price, '']
         # init dynamo
         self.dynamodb_resource = resource('dynamodb', region_name=self.REGION)
         self.table = self.dynamodb_resource.Table(self.TABLE_NAME)
+        # Remove space from id
+        self.nameID = self.data[0].replace(' ', '_')
 
     def displayData(self):
         print(self.data)
@@ -44,11 +48,9 @@ class Injection:
         # print (details_data)
         # print (self.data[2])
 
-        # Remove space from id
-        nameID = self.data[0].replace(' ', '_')
         self.table.put_item(
             Item={
-                'id': nameID,
+                'id': self.nameID,
                 'details': details_data,
                 "price": self.data[2]
             }
@@ -57,7 +59,7 @@ class Injection:
     def injectImages(self):
         self.table.put_item(
             Item={
-                'id': self.data[0],
+                'id': self.nameID,
                 'images': self.data[3]
             }
         )
@@ -68,7 +70,7 @@ class Injection:
         try:
             response = self.table.delete_item(
                 Key={
-                    'id': nameID
+                    'id': self.nameID
                 }
             )
         except ClientError as e:
