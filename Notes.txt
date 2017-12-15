@@ -1,0 +1,10 @@
+URL jupyter: Run following command
+jupyter notebook list
+    Currently running servers:
+    http://localhost:8892/?token=6c422c042ed09611213b66adb711dc98db180c556517e4bc :: C:\Users\rahul
+    http://localhost:8889/?token=1b480d869278acd6af92cb3fa16ccc4666991f908951a001 :: C:\Users\rahul
+    http://localhost:8890/?token=26f9839497d445036505fda78fee617de75743842dde2caf :: C:\Users\rahul
+    http://localhost:8889/?token=ab5115bb88297e606750dc3e858e4513571dac8f35b6bbb2 :: C:\Users\rahul
+    http://localhost:8891/?token=34a8819f23ab561f275181294d14c9f206b58677ffa7a5d9 :: C:\Users\rahul
+    http://localhost:8891/?token=158da27dbe699b7aa1143e2e9a86981fdec2f5ac63e4dd8c :: C:\Users\rahul
+    http://localhost:8889/?token=d7008e277adc385ae9c86748cb8b3f7dcde66d49abc14188 :: C:\Users\rahul
