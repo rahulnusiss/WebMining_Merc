@@ -14,16 +14,8 @@ class Injection:
     TABLE_NAME = "cars"
 
     # name represents id 'primary key'
-    def __init__(self, name, image):
-        self.data = [name, '', '', image]
-        # init dynamo
-        self.dynamodb_resource = resource('dynamodb', region_name=self.REGION)
-        self.table = self.dynamodb_resource.Table(self.TABLE_NAME)
-        # Remove space from id
-        self.nameID = self.data[0].replace(' ', '_')
-
-    def __init__(self, name, details, price):
-        self.data = [name, details, price, '']
+    def __init__(self, name, details, price, images):
+        self.data = [name, details, price, images]
         # init dynamo
         self.dynamodb_resource = resource('dynamodb', region_name=self.REGION)
         self.table = self.dynamodb_resource.Table(self.TABLE_NAME)
@@ -52,21 +44,13 @@ class Injection:
             Item={
                 'id': self.nameID,
                 'details': details_data,
-                "price": self.data[2]
-            }
-        )
-
-    def injectImages(self):
-        self.table.put_item(
-            Item={
-                'id': self.nameID,
-                'images': self.data[3]
+                "price": self.data[2],
+                "images": self.data[3]
             }
         )
 
     def deleteItem(self):
         # Remove space from id
-        nameID = self.data[0].replace(' ', '_')
         try:
             response = self.table.delete_item(
                 Key={
